@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "BO0kuMmSC7bytlhjxmNDCKzaVn408YYfL2ZaqrXWFwUGggtNspZSSH1wqFzDdfKMvIPfpjuRdGf8+o8qRwFU0g==",
+  "success": true,
+  "projectFilePath": "/Volumes/Data/Workspaces/seven-media-west/ConsoleApp7Plus.Tests/ConsoleApp7Plus.Tests.csproj",
+  "expectedPackageFiles": [
+    "/Users/petertran/.nuget/packages/microsoft.netcore.app.ref/7.0.18/microsoft.netcore.app.ref.7.0.18.nupkg.sha512",
+    "/Users/petertran/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.18/microsoft.aspnetcore.app.ref.7.0.18.nupkg.sha512",
+    "/Users/petertran/.nuget/packages/microsoft.netcore.app.host.osx-arm64/7.0.18/microsoft.netcore.app.host.osx-arm64.7.0.18.nupkg.sha512"
+  ],
+  "logs": []
+}
