@@ -12,11 +12,13 @@
     <None Remove="Models\" />
     <None Remove="Enumerations\" />
     <None Remove="Exceptions\" />
+    <None Remove="Clients\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstraction\" />
     <Folder Include="Models\" />
     <Folder Include="Enumerations\" />
     <Folder Include="Exceptions\" />
+    <Folder Include="Clients\" />
   </ItemGroup>
 </Project>

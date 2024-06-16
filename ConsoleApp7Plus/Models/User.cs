@@ -28,11 +28,11 @@ namespace ConsoleApp7Plus.Models
 	{
 		/// <summary>ID of the user record, this is readonly and only added upon creation</summary>
 		[JsonPropertyName("id")]
-		public required string Id { get; init; }
+		public required int Id { get; init; }
 	};
 
 	/// <summary>Aggregation data at a specific age</summary>
-	public class UserAggreation
+	public class UserAggregation
 	{
 		/// <summary>Targeted age for aggreation value</summary>
 		[JsonPropertyName("age")]
