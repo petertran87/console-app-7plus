@@ -41,7 +41,7 @@ namespace ConsoleApp7Plus
 					ILogger<SampleApi> logger = provider.GetRequiredService<ILoggerFactory>().CreateLogger<SampleApi>();
 					HandlerApiJsonResponse handler = provider.GetRequiredService<HandlerApiJsonResponse>();
 
-					return ServiceFactory<SampleApi>.Init(httpClient, logger, handler, "sampletest", accessToken);
+					return ApiFactory<SampleApi>.Init(httpClient, logger, handler, "sampletest", accessToken);
 				})
 				.BuildServiceProvider();
 

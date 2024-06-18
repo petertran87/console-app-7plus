@@ -13,7 +13,7 @@ namespace ConsoleApp7Plus.Services
         private readonly HttpClient _httpClient;
         private readonly HandlerApiJsonResponse _requestHandler;
 
-        public SampleApi(HttpClient httpClient, ILogger<SampleApi> logger, HandlerApiJsonResponse requestHandler, string endpoint, string accessToken = "") : base(endpoint)
+        public SampleApi(HttpClient httpClient, ILogger<SampleApi> logger, HandlerApiJsonResponse requestHandler, string endpoint, string accessToken) : base(endpoint)
         {
             _httpClient = httpClient;
             _logger = logger;
@@ -35,14 +35,21 @@ namespace ConsoleApp7Plus.Services
             // }
 
             // Since attempting to get access to /sampletest/:id always result in 403 Unauthorized response without an access token, we'll need to call GetRecords() method instead
-            List<User> users = await GetRecords();
-
-            foreach (User user in users)
+            try
             {
-                if (id == user.Id)
+                List<User> users = await GetRecords();
+
+                foreach (User user in users)
                 {
-                    return user;
+                    if (id == user.Id)
+                    {
+                        return user;
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                throw;
             }
 
             throw new InvalidUserIdException(id);
