@@ -5,6 +5,7 @@ using ConsoleApp7Plus.Abstraction;
 using ConsoleApp7Plus.Enumerations;
 using ConsoleApp7Plus.Exceptions;
 using ConsoleApp7Plus.Models;
+using ConsoleApp7Plus.Utils;
 using Microsoft.Extensions.Logging;
 
 namespace ConsoleApp7Plus.Services
@@ -31,11 +32,7 @@ namespace ConsoleApp7Plus.Services
 				using var responseStream = await response.Content.ReadAsStreamAsync();
 
 				// Deserialise JSON from stream
-				var options = new JsonSerializerOptions { Converters = { new JsonStringEnumConverter<Gender>() } };
-
-				var data = await JsonSerializer.DeserializeAsync<T>(responseStream, options) ?? throw new Exception("No JSON file could be created");
-
-				return data;
+				return await CommonUtils.ParseJsonStream<T>(responseStream, new JsonSerializerOptions { Converters = { new JsonStringEnumConverter<Gender>() } });
 			}
 			// For 404 NOT FOUND error
 			catch (HttpRequestException e) when (e.StatusCode == HttpStatusCode.NotFound)
