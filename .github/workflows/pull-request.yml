@@ -22,7 +22,9 @@ jobs:
           dotnet-version: 7.x.x
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: |
+          dotnet restore ConsoleApp7Plus
+          dotnet restore ConsoleApp7Plus.Tests
 
       - name: Test
         run: dotnet test --no-build --verbosity normal
