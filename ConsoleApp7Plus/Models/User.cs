@@ -28,11 +28,11 @@ namespace ConsoleApp7Plus.Models
 	{
 		/// <summary>ID of the user record, this is readonly and only added upon creation</summary>
 		[JsonPropertyName("id")]
-		public required string Id { get; init; }
+		public required int Id { get; init; }
 	};
 
 	/// <summary>Aggregation data at a specific age</summary>
-	public class UserAggreation
+	public class UserAggregation
 	{
 		/// <summary>Targeted age for aggreation value</summary>
 		[JsonPropertyName("age")]
@@ -45,6 +45,14 @@ namespace ConsoleApp7Plus.Models
 		/// <summary>Number of male having the same provided age</summary>
 		[JsonPropertyName("male")]
 		public required int Male { get; set; }
+
+		/// <summary>Number of transgender having the same provided age</summary>
+		[JsonPropertyName("trans")]
+		public required int Trans { get; set; }
+
+		/// <summary>Number of other genders having the same provided age</summary>
+		[JsonPropertyName("others")]
+		public required int Others { get; set; }
 	};
 }
 
