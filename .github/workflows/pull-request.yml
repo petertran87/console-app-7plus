@@ -27,7 +27,7 @@ jobs:
           dotnet restore ConsoleApp7Plus.Tests
 
       - name: Test
-        run: dotnet test --no-build --verbosity normal
+        run: dotnet test ConsoleApp7Plus.Tests --no-build --verbosity normal
 
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build ConsoleApp7Plus --no-restore
