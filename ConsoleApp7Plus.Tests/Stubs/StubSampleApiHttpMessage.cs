@@ -26,22 +26,22 @@ namespace ConsoleApp7Plus.Tests.Stubs
 			return ServiceFactory<SampleApi, T>.Init(_consumerLogger, apiClient);
 		}
 	}
-}
 
-public class StubSampleApiHttpMessage : StubHttpMessageHandler<List<User>>
-{
-	public StubSampleApiHttpMessage(HttpStatusCode statusCode, List<User>? stubData) : base(statusCode, stubData)
-	{ }
-
-	protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+	public class StubSampleApiHttpMessage : StubHttpMessageHandler<List<User>>
 	{
-		HttpResponseMessage res = new() { StatusCode = _statusCode, Content = new StringContent(_response) };
-		return await Task.FromResult(res);
-	}
+		public StubSampleApiHttpMessage(HttpStatusCode statusCode, List<User>? stubData) : base(statusCode, stubData)
+		{ }
 
-	protected override async Task<HttpResponseMessage> SendAsyncWithTimeOut(HttpRequestMessage request, CancellationToken cancellationToken)
-	{
-		await Task.Delay(Timeout.Infinite, cancellationToken);
-		throw new TaskCanceledException();
+		protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+		{
+			HttpResponseMessage res = new() { StatusCode = _statusCode, Content = new StringContent(_response) };
+			return await Task.FromResult(res);
+		}
+
+		protected override async Task<HttpResponseMessage> SendAsyncWithTimeOut(HttpRequestMessage request, CancellationToken cancellationToken)
+		{
+			await Task.Delay(Timeout.Infinite, cancellationToken);
+			throw new TaskCanceledException();
+		}
 	}
 }
