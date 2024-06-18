@@ -12,13 +12,20 @@
     <None Remove="Models\" />
     <None Remove="Enumerations\" />
     <None Remove="Exceptions\" />
-    <None Remove="Clients\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstraction\" />
     <Folder Include="Models\" />
     <Folder Include="Enumerations\" />
     <Folder Include="Exceptions\" />
-    <Folder Include="Clients\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+    <PackageReference Include="Polly" Version="8.4.0" />
+    <PackageReference Include="Polly.Extensions.Http" Version="3.0.0" />
   </ItemGroup>
 </Project>

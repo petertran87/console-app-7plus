@@ -45,6 +45,14 @@ namespace ConsoleApp7Plus.Models
 		/// <summary>Number of male having the same provided age</summary>
 		[JsonPropertyName("male")]
 		public required int Male { get; set; }
+
+		/// <summary>Number of transgender having the same provided age</summary>
+		[JsonPropertyName("trans")]
+		public required int Trans { get; set; }
+
+		/// <summary>Number of other genders having the same provided age</summary>
+		[JsonPropertyName("others")]
+		public required int Others { get; set; }
 	};
 }
 

@@ -3,13 +3,9 @@
 	/// <summary>An abstract class to define all available aggregation methods in an API interaction class</summary>
 	public abstract class Aggregation<T>
 	{
-		public readonly string _Endpoint;
-
 		/// <summary>Base constructor for abstract class to scaffold an API aggregation class</summary>
-		public Aggregation(string endpoint)
-		{
-			_Endpoint = endpoint;
-		}
+		public Aggregation()
+		{ }
 
 		/// <summary>Aggregate data to get demographic data groups</summary>
 		/// <typeparam name="T">Data type used for demographic data</typeparam>

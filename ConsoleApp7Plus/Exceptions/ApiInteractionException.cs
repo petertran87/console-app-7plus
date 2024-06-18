@@ -1,4 +1,5 @@
-﻿using ConsoleApp7Plus.Models;
+﻿using System.Net;
+using ConsoleApp7Plus.Models;
 
 namespace ConsoleApp7Plus.Exceptions
 {
@@ -9,8 +10,8 @@ namespace ConsoleApp7Plus.Exceptions
 
 		/// <summary>Extend the message context with invalid user ID</summary>
 		/// <param name="id">Value of the invalid ID</param>
-		public CustomRequestException(string route, int statusCode, string statusText, string? errorMsg) : base(
-			$"Encountered an error when retrieving data from route {route} with status code {statusCode}: {statusText}" +
+		public CustomRequestException(string route, HttpStatusCode? statusCode, string? errorMsg) : base(
+			$"Encountered an error when retrieving data from route {route} with status code {statusCode?.ToString() ?? "unknown"}" +
 			$"{(string.IsNullOrEmpty(errorMsg) ? " without context." : $". Reason: {errorMsg}")}"
 		)
 		{ }
@@ -29,14 +30,14 @@ namespace ConsoleApp7Plus.Exceptions
 
 	/// <summary>Exception used when an attempt to perform an operation results in failure</summary>
 	/// <typeparam name="T">Data type associated with the exception</typeparam>
-	public class InvalidOperationException<T> : Exception
+	public class InvalidRequestOperationException<T> : Exception
 	{
 		private readonly T? _Data;
 		private readonly string _Operation;
 		private readonly string _Reason;
 
 		/// <summary>Base constructor</summary>
-		public InvalidOperationException(string reason, string? operation) : base()
+		public InvalidRequestOperationException(string reason, string? operation) : base()
 		{
 			_Operation = operation ?? "unknown";
 			_Reason = reason;
@@ -44,7 +45,7 @@ namespace ConsoleApp7Plus.Exceptions
 
 		/// <summary>Extend the message context with invalid user ID</summary>
 		/// <param name="id">Value of the invalid ID</param>
-		public InvalidOperationException(string reason, T data, string? operation) : base()
+		public InvalidRequestOperationException(string reason, T? data, string? operation) : base()
 		{
 			_Data = data;
 			_Operation = operation ?? "unknown";
@@ -61,11 +62,9 @@ namespace ConsoleApp7Plus.Exceptions
 					{
 						return $"Invalid {_Operation.ToLower()} operation: Cannot perform operation for user {user.FirstName} {user.LastName} for reason \"{_Reason}\"";
 					}
-
-					return base.Message;
 				}
 
-				return base.Message;
+				return $"Invalid {_Operation.ToLower()} operation for reason \"{_Reason}\"";
 			}
 		}
 	}
